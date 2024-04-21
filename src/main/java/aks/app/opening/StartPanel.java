@@ -2,24 +2,23 @@ package aks.app.opening;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FileDialog;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
-
-import javax.swing.JFileChooser;
 import javax.swing.JPanel;
-
 import aks.app.Main;
 
 public class StartPanel extends JPanel{
     Main main;
 
     public static int WIDTH = 720, HEIGHT = 500;
+    public static int GITHUB = 0, TWITTER = 1, CODE = 2;
     public Rectangle titleBar = new Rectangle(0,0,WIDTH-1,50), addButton = new Rectangle(0,0,0,0),
                     exitButton = new Rectangle(0,0,0,0);
     public boolean moveFrame, buttonHovered = false;
-    OpeningMouse om;
+    public OpeningMouse om;
     
     
     public StartPanel(Main main){
@@ -39,12 +38,28 @@ public class StartPanel extends JPanel{
         main.ui.drawOpeningPanel(g2);
     }
     public int chooseFile(){
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.showOpenDialog(fileChooser);
-        if (fileChooser.getSelectedFile()!= null) {
-            return 1;
+        // JFileChooser fileChooser = new JFileChooser();
+        // fileChooser.showOpenDialog(fileChooser);
+        // if (fileChooser.getSelectedFile()!= null) {
+        //     return 1;
+        // }
+        // return 0;
+
+        FileDialog fileDialog = new FileDialog(main.startFrame.frame, "Open", FileDialog.LOAD);
+        fileDialog.setVisible(true);
+
+        String fileName = fileDialog.getFile();
+        int lastDotIndex = fileName.lastIndexOf(".");
+
+        String fileExt;
+        if(lastDotIndex != -1){
+            fileExt = fileName.substring(lastDotIndex+1);
+            if(fileExt.equals("xlsx")){
+                return 1;
+            }
         }
         return 0;
+        
     }
 
     

@@ -6,9 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-
 import javax.swing.JPanel;
-
 import aks.app.Main;
 import aks.app.Strings;
 
@@ -16,7 +14,7 @@ public class SUB_BottomPanel extends JPanel{
     Main main;
     public SUB_BottomPanel(Main main){
         this.main = main;
-        setPreferredSize(new Dimension(100,25));
+        setPreferredSize(new Dimension(100,26));
         setBackground(Strings.HERO_COLOR);
     }
     @Override

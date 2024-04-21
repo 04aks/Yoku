@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 public class Strings {
+    public static String WRONG_FILE_TYPE = "Please select a .xlsx file";
     public static String ICON_PATH = "/aks/res/images/icon.png";
     public static String ICON_PATH_SMALL = "/aks/res/images/iconsmall.png";
     public static String APP_NAME = "Yoku";
@@ -12,4 +13,7 @@ public class Strings {
     public static ImageIcon ICON = new ImageIcon(Strings.class.getResource(ICON_PATH));
     public static String COPYRIGHT = "Copyright © Yoku - GitHub.com/04aks";
     public static Color HERO_COLOR = new Color(0,0,0,25);
+    public static String GIT_IMG_PATH = "/aks/res/images/github.png";
+    public static String X_IMG_PATH = "/aks/res/images/x.png";
+    public static String CODE_IMG_PATH = "/aks/res/images/code.png";
 }

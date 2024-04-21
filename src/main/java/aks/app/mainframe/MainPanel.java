@@ -12,8 +12,8 @@ import aks.app.Main;
 public class MainPanel extends JPanel{
     Main main;
     public static int WIDTH = 900, HEIGHT = 600;
-    SUB_BottomPanel buttomPanel;
-    SUB_TopPanel topPanel;
+    public SUB_BottomPanel buttomPanel;
+    public SUB_TopPanel topPanel;
     public MainPanel(Main main){
         this.main = main;
         setPreferredSize(new Dimension(WIDTH,HEIGHT));
