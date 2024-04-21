@@ -23,11 +23,11 @@ public class SUB_TopPanel extends JPanel{
         super.paintComponent(g2);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        BufferedImage logo = main.utils.importImage(Strings.ICON_PATH);
+        BufferedImage logo = main.utils.importImage(Strings.ICON_PATH_SMALL);
         int x = 10;
         //THE IMAGE IS SQUARE SHAPED height = width
-        int scaled = (int)(logo.getWidth() * 0.3);
-        int y = (getHeight() - scaled)/2;
-        g2.drawImage(logo, x, y, scaled, scaled, null);
+        // int scaled = (int)(logo.getWidth() * 0.3);
+        int y = (getHeight() - logo.getHeight())/2;
+        g2.drawImage(logo, x, y, null);
     }
 }
