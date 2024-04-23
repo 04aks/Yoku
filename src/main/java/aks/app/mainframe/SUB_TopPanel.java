@@ -35,9 +35,6 @@ public class SUB_TopPanel extends JPanel{
         JLabel gitLabel = null;
         addLabel(gitLabel, Strings.GIT_IMG_PATH, "https://github.com/04aks");
 
-        JLabel xLabel = null;
-        addLabel(xLabel, Strings.X_IMG_PATH, "https://twitter.com/07kisee");
-
         JLabel codeLabel = null;
         addLabel(codeLabel, Strings.CODE_IMG_PATH, "https://github.com/04aks/Yoku");
     }
