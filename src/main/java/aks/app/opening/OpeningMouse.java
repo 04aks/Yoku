@@ -51,16 +51,12 @@ public class OpeningMouse implements MouseListener, MouseMotionListener{
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        // if(main.startFrame.sp.titleBar.contains(e.getX(),e.getY())){
-            main.startFrame.sp.moveFrame = false;
-        // }
+        main.startFrame.sp.moveFrame = false;
     }
     @Override
     public void mouseDragged(MouseEvent e) {
         if(main.startFrame.sp.moveFrame){
-            // if(main.startFrame.sp.titleBar.contains(e.getX(),e.getY())){
-                main.startFrame.frame.setLocation(e.getXOnScreen() - StartFrame.frameX, e.getYOnScreen() - StartFrame.frameY);
-            // }
+            main.startFrame.frame.setLocation(e.getXOnScreen() - StartFrame.frameX, e.getYOnScreen() - StartFrame.frameY);
         }
     }
     @Override
