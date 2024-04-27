@@ -15,7 +15,7 @@ public class MainPanel extends JPanel{
     public static int WIDTH = 900, HEIGHT = 600;
     SUB_BottomPanel buttomPanel;
     SUB_TopPanel topPanel;
-    SUB_LeftPanel leftPanel;
+    public SUB_LeftPanel leftPanel;
     public SUB_RightPanel rightPanel;
     public MainPanel(Main main){
         this.main = main;

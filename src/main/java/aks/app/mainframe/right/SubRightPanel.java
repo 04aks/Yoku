@@ -47,8 +47,8 @@ public class SubRightPanel extends JPanel implements MouseListener, MouseMotionL
         }
         
 
-        Color plainColor = new Color(0x686868);
-        Color selectedColor = new Color(0x525252);
+        Color selectedColor = new Color(0x686868);
+        Color plainColor = new Color(0x525252);
         
         y += 30;
         int x = 5;
@@ -57,9 +57,9 @@ public class SubRightPanel extends JPanel implements MouseListener, MouseMotionL
         for(int i = 0; i<main.cellsManager.cellsList.size(); i++){
             
             if(main.cellsManager.cellsList.get(i).hovered){
-                g2.setColor(plainColor);
-            }else{
                 g2.setColor(selectedColor);
+            }else{
+                g2.setColor(plainColor);
             }
             g2.fillRoundRect(x, y, width, height, 20, 20);
             main.cellsManager.cellsList.get(i).rectangle.setBounds(x,y,width,height);
