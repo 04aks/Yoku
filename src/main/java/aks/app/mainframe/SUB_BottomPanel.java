@@ -22,7 +22,6 @@ public class SUB_BottomPanel extends JPanel{
         Graphics2D g2 = (Graphics2D)g;
         super.paintComponent(g2);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        System.out.println("draws");
         main.ui.setFontAtt(g2, main.ui.fontRegular, Font.PLAIN, 13, Color.LIGHT_GRAY);
         String text = Strings.COPYRIGHT;
         int x = main.ui.getXForCenteredText(g2, text, getWidth());

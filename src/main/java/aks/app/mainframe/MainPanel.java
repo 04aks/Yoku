@@ -6,8 +6,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
-
 import aks.app.Main;
+import aks.app.mainframe.left.SUB_LeftPanel;
+import aks.app.mainframe.right.SUB_RightPanel;
 
 public class MainPanel extends JPanel{
     Main main;
@@ -15,12 +16,12 @@ public class MainPanel extends JPanel{
     SUB_BottomPanel buttomPanel;
     SUB_TopPanel topPanel;
     SUB_LeftPanel leftPanel;
-    SUB_RightPanel rightPanel;
+    public SUB_RightPanel rightPanel;
     public MainPanel(Main main){
         this.main = main;
         setPreferredSize(new Dimension(WIDTH,HEIGHT));
         setBackground(Color.DARK_GRAY);
-        setLayout(new BorderLayout(1,1));
+        setLayout(new BorderLayout(2,2));
 
         buttomPanel = new SUB_BottomPanel(main);
         topPanel = new SUB_TopPanel(main);

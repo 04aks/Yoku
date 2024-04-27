@@ -4,18 +4,25 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 import aks.app.opening.StartPanel;
 
 public class UI {
     Main main;
+    public BufferedImage greenArrow, redArrow;
     public Font fontRegular, fontBlack;
     public UI(Main main){
         this.main = main;
         fontRegular = main.utils.createFont("/aks/res/fonts/Roboto-Regular.ttf");
         fontBlack = main.utils.createFont("/aks/res/fonts/Roboto-Black.ttf");
+        importImages();
     }
 
+    public void importImages(){
+        greenArrow = main.utils.importImage(Strings.GREEN_ARROW_PATH);
+        redArrow = main.utils.importImage(Strings.RED_ARROW_PATH);
+    }
     public void drawOpeningPanel(Graphics2D g2){
 
         setFontAtt(g2, main.ui.fontBlack, Font.BOLD, 20, Color.LIGHT_GRAY);
@@ -69,6 +76,11 @@ public class UI {
         graphics.setColor(color);
         graphics.setFont(font);
         graphics.setFont(graphics.getFont().deriveFont(style,size));
+    }
+    public int alignTextToRight(Graphics2D g2, String text, int tail){
+
+        int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        return tail - length;
     }
     
 }

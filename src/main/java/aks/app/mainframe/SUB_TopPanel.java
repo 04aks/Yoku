@@ -55,11 +55,7 @@ public class SUB_TopPanel extends JPanel{
         super.paintComponent(g2);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // BufferedImage github = main.utils.importImage(Strings.GIT_IMG_PATH);
-        // int width = 30;
-        // int x = 10;
-        // int y = (getHeight() - github.getHeight())/2;
-        // g2.drawImage(github, x, y, null);
+    
 
     }
 }

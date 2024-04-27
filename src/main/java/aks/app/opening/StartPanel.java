@@ -37,30 +37,7 @@ public class StartPanel extends JPanel{
 
         main.ui.drawOpeningPanel(g2);
     }
-    public int chooseFile(){
-        // JFileChooser fileChooser = new JFileChooser();
-        // fileChooser.showOpenDialog(fileChooser);
-        // if (fileChooser.getSelectedFile()!= null) {
-        //     return 1;
-        // }
-        // return 0;
-
-        FileDialog fileDialog = new FileDialog(main.startFrame.frame, "Open", FileDialog.LOAD);
-        fileDialog.setVisible(true);
-
-        String fileName = fileDialog.getFile();
-        int lastDotIndex = fileName.lastIndexOf(".");
-
-        String fileExt;
-        if(lastDotIndex != -1){
-            fileExt = fileName.substring(lastDotIndex+1);
-            if(fileExt.equals("xlsx")){
-                return 1;
-            }
-        }
-        return 0;
-        
-    }
+    
 
     
 }

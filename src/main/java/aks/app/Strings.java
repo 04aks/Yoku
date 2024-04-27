@@ -16,4 +16,6 @@ public class Strings {
     public static String GIT_IMG_PATH = "/aks/res/images/github.png";
     public static String X_IMG_PATH = "/aks/res/images/x.png";
     public static String CODE_IMG_PATH = "/aks/res/images/code.png";
+    public static String GREEN_ARROW_PATH = "/aks/res/images/green.png";
+    public static String RED_ARROW_PATH = "/aks/res/images/red.png";
 }

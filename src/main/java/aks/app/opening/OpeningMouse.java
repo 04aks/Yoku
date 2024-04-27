@@ -6,6 +6,7 @@ import java.awt.event.MouseMotionListener;
 
 import aks.app.Main;
 import aks.app.mainframe.MainFrame;
+import aks.app.threads.PrepareExcelThread;
 
 public class OpeningMouse implements MouseListener, MouseMotionListener{
     Main main;
@@ -33,10 +34,15 @@ public class OpeningMouse implements MouseListener, MouseMotionListener{
             StartFrame.frameY = e.getY();
         }
         if(main.startFrame.sp.addButton.contains(e.getX(),e.getY())){
-            int file = main.startFrame.sp.chooseFile();
-            if(file == 1){
+
+            int fileNum = main.excelEx.chooseFile();
+            if(fileNum == 1){
                 main.startFrame.frame.dispose();
                 main.mainFrame = new MainFrame(main);
+
+                PrepareExcelThread peThread = new PrepareExcelThread(main);
+                peThread.execute();
+                
             }else{
                 System.out.println("Selected fuck all");
             }
