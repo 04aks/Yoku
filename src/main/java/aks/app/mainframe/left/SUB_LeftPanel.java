@@ -46,20 +46,11 @@ public class SUB_LeftPanel extends JPanel{
             inputNeededBool[i] = true;
             inputRectangles[i] = new Rectangle();
         }
-        inputHint[AMOUNT] = "Amout sent or recieved";
-        inputHint[ACCOUNT] = "ccp";
+        inputHint[AMOUNT] = "*Amout sent or recieved";
+        inputHint[ACCOUNT] = "ccp (optional)";
         inputHint[DATE] = "transaction date (optional)";
     }
-    // @Override
-    // protected void paintComponent(Graphics g) {
-    //     Graphics2D g2 = (Graphics2D)g;
-    //     super.paintComponent(g2);
-        
-
-    //     // g2.setColor(Color.red);
-    //     // g2.draw(recievedBut);
-        
-    // }
+    
     
     
 }

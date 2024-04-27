@@ -74,9 +74,9 @@ public class SubLeftPanel extends JPanel implements MouseListener{
         main.mainFrame.mainPanel.leftPanel.recievedBut.setBounds(recievedButX, radioBoxY, hitboxWidth, radioWidth);
 
 
-        g2.setColor(Color.red);
-        g2.draw(main.mainFrame.mainPanel.leftPanel.sentBut);
-        g2.draw(main.mainFrame.mainPanel.leftPanel.recievedBut);
+        // g2.setColor(Color.red);
+        // g2.draw(main.mainFrame.mainPanel.leftPanel.sentBut);
+        // g2.draw(main.mainFrame.mainPanel.leftPanel.recievedBut);
         
     }
     public void drawTextFields(Graphics2D g2, int x, int y, int width, int height){
