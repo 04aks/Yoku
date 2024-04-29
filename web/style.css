@@ -1,0 +1,18 @@
+*{
+    background-color: gray;
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+.bodycontainer{
+    width: 900px;
+    outline: 2px solid red;
+}
+.text{
+    color: aliceblue;
+    font-size: 40px;
+    padding: 16px;
+}
