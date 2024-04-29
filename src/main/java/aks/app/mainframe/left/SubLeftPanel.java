@@ -105,14 +105,12 @@ public class SubLeftPanel extends JPanel implements MouseListener{
         if(main.mainFrame.mainPanel.leftPanel.sentBut.contains(e.getX(), e.getY())){
             if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.recievedOption){
                 main.mainFrame.mainPanel.leftPanel.filterOption = main.mainFrame.mainPanel.leftPanel.sentOption;
-                System.out.println("fk");
             }
         }
 
         if(main.mainFrame.mainPanel.leftPanel.recievedBut.contains(e.getX(), e.getY())){
             if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.sentOption){
                 main.mainFrame.mainPanel.leftPanel.filterOption = main.mainFrame.mainPanel.leftPanel.recievedOption;
-                System.out.println("unfuck");
             }
         }
 
