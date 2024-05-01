@@ -25,9 +25,9 @@ public class SUB_LeftPanel extends JPanel{
 
     Rectangle sentBut = new Rectangle(), recievedBut = new Rectangle(), searchButton = new Rectangle();
     boolean searchButtonHovered = false;
-    int filterOption = 0;
-    final int sentOption = 0;
-    final int recievedOption = 1;
+    public int filterOption = 0;
+    public final int sentOption = 0;
+    public final int recievedOption = 1;
 
     SubLeftPanel subLeftPanel;
 
@@ -45,6 +45,7 @@ public class SUB_LeftPanel extends JPanel{
             inputSelectBool[i] = false;
             inputNeededBool[i] = true;
             inputRectangles[i] = new Rectangle();
+            inputContent[i] = "";
         }
         inputHint[AMOUNT] = "*Amout sent or recieved";
         inputHint[ACCOUNT] = "ccp sans clé (optional)";

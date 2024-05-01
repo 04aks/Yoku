@@ -158,6 +158,9 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
             }
         }
 
+        if(slp.searchButton.contains(e.getX(),e.getY())){
+            main.searchRow.searchPayements(slp.inputContent[SUB_LeftPanel.AMOUNT], slp.inputContent[SUB_LeftPanel.ACCOUNT], slp.inputContent[SUB_LeftPanel.DATE]);
+        }
         repaint();
     }
     //MOUUUUUSE
@@ -200,7 +203,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
             if(slp.amountIndex < slp.amountString.length){
                 slp.amountString[slp.amountIndex] = character;
                 slp.amountIndex++;
-                slp.inputContent[SUB_LeftPanel.AMOUNT] = new String(slp.amountString);
+                slp.inputContent[SUB_LeftPanel.AMOUNT] = new String(slp.amountString).trim();
             }
         }
 
@@ -208,7 +211,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
             if(slp.ccpIndex < slp.ccpString.length){
                 slp.ccpString[slp.ccpIndex] = character;
                 slp.ccpIndex++;
-                slp.inputContent[SUB_LeftPanel.ACCOUNT] = new String(slp.ccpString);
+                slp.inputContent[SUB_LeftPanel.ACCOUNT] = new String(slp.ccpString).trim();
             }
         }
 
@@ -216,7 +219,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
             if(slp.dateIndex < slp.dateString.length){
                 slp.dateString[slp.dateIndex] = character;
                 slp.dateIndex++;
-                slp.inputContent[SUB_LeftPanel.DATE] = new String(slp.dateString);
+                slp.inputContent[SUB_LeftPanel.DATE] = new String(slp.dateString).trim();
             }
         }
         
@@ -226,7 +229,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
             if(slp.amountIndex > 0){
                 slp.amountString[slp.amountIndex - 1] = ' ';
                 slp.amountIndex--;
-                slp.inputContent[SUB_LeftPanel.AMOUNT] = new String(slp.amountString);
+                slp.inputContent[SUB_LeftPanel.AMOUNT] = new String(slp.amountString).trim();
             }
         }
 
@@ -234,7 +237,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
             if(slp.ccpIndex > 0){
                 slp.ccpString[slp.ccpIndex - 1] = ' ';
                 slp.ccpIndex--;
-                slp.inputContent[SUB_LeftPanel.ACCOUNT] = new String(slp.ccpString);
+                slp.inputContent[SUB_LeftPanel.ACCOUNT] = new String(slp.ccpString).trim();
             }
         }
 
@@ -242,7 +245,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
             if(slp.dateIndex > 0){
                 slp.dateString[slp.dateIndex - 1] = ' ';
                 slp.dateIndex--;
-                slp.inputContent[SUB_LeftPanel.DATE] = new String(slp.dateString);
+                slp.inputContent[SUB_LeftPanel.DATE] = new String(slp.dateString).trim();
             }
         }
     }
