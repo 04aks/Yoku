@@ -10,7 +10,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
 import aks.app.Main;
-import aks.app.Strings;
 
 public class SubRightPanel extends JPanel implements MouseListener, MouseMotionListener{
     Main main;

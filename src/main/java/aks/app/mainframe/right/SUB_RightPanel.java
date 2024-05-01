@@ -1,8 +1,6 @@
 package aks.app.mainframe.right;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
 import javax.swing.JPanel;
 import aks.app.Main;
 import aks.app.Strings;

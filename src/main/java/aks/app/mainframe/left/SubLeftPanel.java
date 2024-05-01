@@ -161,6 +161,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, KeyListener{
     }
     @Override
     public void keyPressed(KeyEvent e) {
+        int code = e.getKeyCode();
         char character = e.getKeyChar();
         
 
@@ -169,7 +170,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, KeyListener{
             deleteInput();
         }
         //INPUT
-        else{
+        if(code != KeyEvent.VK_CAPS_LOCK && code != 155 && code != 36 && code != 33 && code != 127 && code != 35 && code != 34 && code != 10 && code != 8 && code != 17 && code != 18 && code != 16 && code != 38 && code != 40 && code != 37 && code != 39){
             input(character);
         }
 
