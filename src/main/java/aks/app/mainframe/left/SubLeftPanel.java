@@ -10,17 +10,20 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
 import javax.swing.JPanel;
 import aks.app.Main;
 import aks.app.Strings;
 
-public class SubLeftPanel extends JPanel implements MouseListener, KeyListener{
+public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionListener, KeyListener{
     Main main;
     SUB_LeftPanel slp;
     public SubLeftPanel(Main main, SUB_LeftPanel slp){
         this.main = main;
         this.slp = slp;
         addMouseListener(this);
+        addMouseMotionListener(this);
         addKeyListener(this);
         setFocusable(true);
     }
@@ -79,9 +82,22 @@ public class SubLeftPanel extends JPanel implements MouseListener, KeyListener{
         slp.recievedBut.setBounds(recievedButX, radioBoxY, hitboxWidth, radioWidth);
 
 
-        // g2.setColor(Color.red);
-        // g2.draw(slp.sentBut);
-        // g2.draw(slp.recievedBut);
+        
+        if(slp.searchButtonHovered){
+            g2.setColor(Strings.CUSTOM_DARKGRAY);
+        }else{
+            g2.setColor(Strings.CUSTOM_LIGHTGRAY);
+        }
+        int buttonWidth = 200;
+        int buttonHeight = 40;
+        int buttonX = (getWidth() - buttonWidth) / 2;
+        int buttonY = getHeight() - 50;
+        g2.fillRoundRect(buttonX, buttonY, buttonWidth, buttonHeight, 20, 20);
+        slp.searchButton.setBounds(buttonX, buttonY, buttonWidth, buttonHeight);
+        String butText = "SEARCH";
+        int butTextX = main.ui.getXForCenteredText(g2, butText, getWidth());
+        g2.setColor(Color.LIGHT_GRAY);
+        g2.drawString(butText, butTextX, buttonY+25);
         
     }
     public void drawTextFields(Graphics2D g2, int x, int y, int width, int height){
@@ -229,5 +245,17 @@ public class SubLeftPanel extends JPanel implements MouseListener, KeyListener{
                 slp.inputContent[SUB_LeftPanel.DATE] = new String(slp.dateString);
             }
         }
+    }
+    @Override
+    public void mouseDragged(MouseEvent e) {
+    }
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        if(slp.searchButton.contains(e.getX(),e.getY())){
+            slp.searchButtonHovered = true;
+        }else{
+            slp.searchButtonHovered = false;
+        }
+        repaint();
     }
 }

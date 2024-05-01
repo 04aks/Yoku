@@ -23,7 +23,8 @@ public class SUB_LeftPanel extends JPanel{
     char[] dateString = new char[10];
     int amountIndex, ccpIndex, dateIndex;
 
-    Rectangle sentBut = new Rectangle(), recievedBut = new Rectangle();
+    Rectangle sentBut = new Rectangle(), recievedBut = new Rectangle(), searchButton = new Rectangle();
+    boolean searchButtonHovered = false;
     int filterOption = 0;
     final int sentOption = 0;
     final int recievedOption = 1;
