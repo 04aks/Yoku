@@ -1,28 +1,27 @@
 package aks.app.mainframe.left;
 
-import java.awt.BasicStroke;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 import aks.app.Main;
 import aks.app.Strings;
 
 public class SUB_LeftPanel extends JPanel{
     Main main;
+
     int totalInputFields = 3;
     static int AMOUNT = 0, ACCOUNT = 1, DATE = 2;
     String[] inputHint = new String[totalInputFields];
+    String[] inputContent = new String[totalInputFields];
     boolean[] inputSelectBool = new boolean[totalInputFields];
     boolean[] inputNeededBool = new boolean[totalInputFields];
     Rectangle[] inputRectangles = new Rectangle[totalInputFields];
+
+    char[] amountString = new char[20];
+    char[] ccpString = new char[10];
+    char[] dateString = new char[10];
+    int amountIndex, ccpIndex, dateIndex;
 
     Rectangle sentBut = new Rectangle(), recievedBut = new Rectangle();
     int filterOption = 0;
@@ -37,7 +36,7 @@ public class SUB_LeftPanel extends JPanel{
         setBackground(Strings.HERO_COLOR);
         setLayout(new BorderLayout());
         interations();
-        subLeftPanel = new SubLeftPanel(main);
+        subLeftPanel = new SubLeftPanel(main, this);
         add(subLeftPanel, BorderLayout.CENTER);
     }
     public void interations(){
@@ -47,8 +46,8 @@ public class SUB_LeftPanel extends JPanel{
             inputRectangles[i] = new Rectangle();
         }
         inputHint[AMOUNT] = "*Amout sent or recieved";
-        inputHint[ACCOUNT] = "ccp (optional)";
-        inputHint[DATE] = "transaction date (optional)";
+        inputHint[ACCOUNT] = "ccp sans clé (optional)";
+        inputHint[DATE] = "transaction date (optional) (DD/MM/YYYY)";
     }
     
     

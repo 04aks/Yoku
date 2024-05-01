@@ -13,7 +13,7 @@ import aks.app.Main;
 public class StartPanel extends JPanel{
     Main main;
 
-    public static int WIDTH = 720, HEIGHT = 500;
+    public static int WIDTH = 720, HEIGHT = 350;
     public static int GITHUB = 0, TWITTER = 1, CODE = 2;
     public Rectangle titleBar = new Rectangle(0,0,WIDTH-1,50), addButton = new Rectangle(0,0,0,0),
                     exitButton = new Rectangle(0,0,0,0);

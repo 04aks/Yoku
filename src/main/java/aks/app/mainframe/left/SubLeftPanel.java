@@ -6,17 +6,23 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 import aks.app.Main;
 import aks.app.Strings;
 
-public class SubLeftPanel extends JPanel implements MouseListener{
+public class SubLeftPanel extends JPanel implements MouseListener, KeyListener{
     Main main;
-    public SubLeftPanel(Main main){
+    SUB_LeftPanel slp;
+    public SubLeftPanel(Main main, SUB_LeftPanel slp){
         this.main = main;
+        this.slp = slp;
         addMouseListener(this);
+        addKeyListener(this);
+        setFocusable(true);
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -56,42 +62,56 @@ public class SubLeftPanel extends JPanel implements MouseListener{
         int hitboxWidth = 80;
         int arc = 10;
         //SENT RADIO OPTION 
-        if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.sentOption){
-            g2.setColor(Color.GREEN);
+        g2.setColor(Strings.GREEN_SELECTION);
+        if(slp.filterOption == slp.sentOption){
             g2.fillRoundRect(rectsX, radioBoxY, radioWidth, radioWidth, arc, arc);
         }   
-        if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.recievedOption){
-            g2.setColor(Color.GREEN);
+        if(slp.filterOption == slp.recievedOption){
             g2.fillRoundRect(recievedButX, radioBoxY, radioWidth, radioWidth, arc, arc);
         } 
         main.ui.setFontAtt(g2, main.ui.fontBlack, Font.PLAIN, 15, Color.LIGHT_GRAY);
         g2.drawRoundRect(rectsX, radioBoxY, radioWidth, radioWidth,arc,arc);
         g2.drawString("Sent", rectsX + radioWidth + 6, radioBoxY+14);
-        main.mainFrame.mainPanel.leftPanel.sentBut.setBounds(rectsX, radioBoxY, hitboxWidth, radioWidth);
+        slp.sentBut.setBounds(rectsX, radioBoxY, hitboxWidth, radioWidth);
         //RECIEVED RADIO BUTTON
         g2.drawRoundRect(recievedButX, radioBoxY, radioWidth, radioWidth,arc,arc);
         g2.drawString("Recieved", recievedButX + radioWidth + 6, radioBoxY+14);
-        main.mainFrame.mainPanel.leftPanel.recievedBut.setBounds(recievedButX, radioBoxY, hitboxWidth, radioWidth);
+        slp.recievedBut.setBounds(recievedButX, radioBoxY, hitboxWidth, radioWidth);
 
 
         // g2.setColor(Color.red);
-        // g2.draw(main.mainFrame.mainPanel.leftPanel.sentBut);
-        // g2.draw(main.mainFrame.mainPanel.leftPanel.recievedBut);
+        // g2.draw(slp.sentBut);
+        // g2.draw(slp.recievedBut);
         
     }
     public void drawTextFields(Graphics2D g2, int x, int y, int width, int height){
 
         g2.setStroke(new BasicStroke(2));
-        main.ui.setFontAtt(g2, main.ui.fontRegular, Font.PLAIN, 13, Color.LIGHT_GRAY);
-        for(int i = 0; i < main.mainFrame.mainPanel.leftPanel.totalInputFields; i++){
+        
+        for(int i = 0; i < slp.totalInputFields; i++){
             
-            if(main.mainFrame.mainPanel.leftPanel.inputNeededBool[i]){
+            if(slp.inputNeededBool[i]){
                 g2.setColor(Color.LIGHT_GRAY);
             }else{
                 g2.setColor(Strings.CUSTOM_LIGHTGRAY);
             }
+
+            
+            main.ui.setFontAtt(g2, main.ui.fontBlack, Font.PLAIN, 16, Color.LIGHT_GRAY);
+            if(slp.inputSelectBool[i]){
+                g2.setColor(Strings.GREEN_SELECTION);
+            }
+
+            //INPUT TEXT
+            if(slp.inputContent[i] != null){
+                g2.drawString(slp.inputContent[i], x+10, y+26);
+            }
+
+            //FIELDS AND HINTS
             g2.drawRoundRect(x, y, width, height, 20, 20);
-            g2.drawString(main.mainFrame.mainPanel.leftPanel.inputHint[i], x, y+height+13);
+            main.ui.setFontAtt(g2, main.ui.fontRegular, Font.PLAIN, 13, Color.LIGHT_GRAY);
+            g2.drawString(slp.inputHint[i], x, y+height+13);
+            slp.inputRectangles[i].setBounds(x, y, width, height);
             y+=height+20;
         }
     }
@@ -102,31 +122,111 @@ public class SubLeftPanel extends JPanel implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if(main.mainFrame.mainPanel.leftPanel.sentBut.contains(e.getX(), e.getY())){
-            if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.recievedOption){
-                main.mainFrame.mainPanel.leftPanel.filterOption = main.mainFrame.mainPanel.leftPanel.sentOption;
+        if(slp.sentBut.contains(e.getX(), e.getY())){
+            if(slp.filterOption == slp.recievedOption){
+                slp.filterOption = slp.sentOption;
             }
         }
 
-        if(main.mainFrame.mainPanel.leftPanel.recievedBut.contains(e.getX(), e.getY())){
-            if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.sentOption){
-                main.mainFrame.mainPanel.leftPanel.filterOption = main.mainFrame.mainPanel.leftPanel.recievedOption;
+        if(slp.recievedBut.contains(e.getX(), e.getY())){
+            if(slp.filterOption == slp.sentOption){
+                slp.filterOption = slp.recievedOption;
+            }
+        }
+
+        for(int i = 0; i < slp.totalInputFields; i++){
+            if(slp.inputRectangles[i].contains(e.getX(),e.getY())){
+                slp.inputSelectBool[i] = true;
+            }else{
+                slp.inputSelectBool[i] = false;
             }
         }
 
         repaint();
     }
-
+    //MOUUUUUSE
     @Override
     public void mouseReleased(MouseEvent e) {
     }
-
     @Override
     public void mouseEntered(MouseEvent e) {
     }
-
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    
+
+    //KEYYYYS
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+    @Override
+    public void keyPressed(KeyEvent e) {
+        char character = e.getKeyChar();
+        
+
+        //DELETE
+        if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+            deleteInput();
+        }
+        //INPUT
+        else{
+            input(character);
+        }
+
+        repaint();
+    }
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+    public void input(char character){
+        if(slp.inputSelectBool[SUB_LeftPanel.AMOUNT]){
+            if(slp.amountIndex < slp.amountString.length){
+                slp.amountString[slp.amountIndex] = character;
+                slp.amountIndex++;
+                slp.inputContent[SUB_LeftPanel.AMOUNT] = new String(slp.amountString);
+            }
+        }
+
+        else if(slp.inputSelectBool[SUB_LeftPanel.ACCOUNT]){
+            if(slp.ccpIndex < slp.ccpString.length){
+                slp.ccpString[slp.ccpIndex] = character;
+                slp.ccpIndex++;
+                slp.inputContent[SUB_LeftPanel.ACCOUNT] = new String(slp.ccpString);
+            }
+        }
+
+        else if(slp.inputSelectBool[SUB_LeftPanel.DATE]){
+            if(slp.dateIndex < slp.dateString.length){
+                slp.dateString[slp.dateIndex] = character;
+                slp.dateIndex++;
+                slp.inputContent[SUB_LeftPanel.DATE] = new String(slp.dateString);
+            }
+        }
+        
+    }
+    public void deleteInput(){
+        if(slp.inputSelectBool[SUB_LeftPanel.AMOUNT]){
+            if(slp.amountIndex > 0){
+                slp.amountString[slp.amountIndex - 1] = ' ';
+                slp.amountIndex--;
+                slp.inputContent[SUB_LeftPanel.AMOUNT] = new String(slp.amountString);
+            }
+        }
+
+        else if(slp.inputSelectBool[SUB_LeftPanel.ACCOUNT]){
+            if(slp.ccpIndex > 0){
+                slp.ccpString[slp.ccpIndex - 1] = ' ';
+                slp.ccpIndex--;
+                slp.inputContent[SUB_LeftPanel.ACCOUNT] = new String(slp.ccpString);
+            }
+        }
+
+        else if(slp.inputSelectBool[SUB_LeftPanel.DATE]){
+            if(slp.dateIndex > 0){
+                slp.dateString[slp.dateIndex - 1] = ' ';
+                slp.dateIndex--;
+                slp.inputContent[SUB_LeftPanel.DATE] = new String(slp.dateString);
+            }
+        }
+    }
 }
