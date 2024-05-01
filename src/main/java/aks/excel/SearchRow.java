@@ -12,6 +12,7 @@ public class SearchRow {
     }
     public void searchPayements(String amount, String ccp, String date){
 
+        int amountIndex;
         int sendIndex = 3;
         int recieveIndex = 4;
         int ccpIndex = 2;
@@ -23,26 +24,34 @@ public class SearchRow {
                 for(Cell cell : row){
 
                     //FILTERING RECIEVED MONEY
-                    if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.recievedOption){
-                        // if(cell.getColumnIndex() == recieveIndex){
-                            if(!amount.isEmpty()){
-                                long ccpNum = (long)row.getCell(ccpIndex).getNumericCellValue();
-                                if (Integer.parseInt(amount) == row.getCell(recieveIndex).getNumericCellValue() && ccp.equals(Long.toString(ccpNum)) && date.equals(row.getCell(dateIndex).getStringCellValue())) {
-                                    System.out.println(main.cellsManager.cellsList.get(cell.getRowIndex() - rowStarts).getTax());
-                                    break;
-                                }
-                            }
-                        // }
-                    }
+                    
 
-                    //FILTERING SENT MONEY 
-                    if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.sentOption){
-                        if(cell.getColumnIndex() == sendIndex){
-                            if (Integer.parseInt(amount) == cell.getNumericCellValue()*-1) {
-                                System.out.println("-_-");
-                            }
+                    if(!amount.isEmpty()){
+                        long ccpNum = (long)row.getCell(ccpIndex).getNumericCellValue();
+                        int amountInt = Integer.parseInt(amount);
+
+                        if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.recievedOption){
+                            amountIndex = recieveIndex;
+                        }else{
+                            amountIndex = sendIndex;
+                            amountInt*=-1;
+                        }
+
+                        if (amountInt == row.getCell(amountIndex).getNumericCellValue() && ccp.equals(Long.toString(ccpNum)) && date.equals(row.getCell(dateIndex).getStringCellValue())) {
+                            System.out.println(main.cellsManager.cellsList.get(cell.getRowIndex() - rowStarts).getTransactionCode() + "    " + (cell.getRowIndex() - rowStarts));
+                            break;
                         }
                     }
+                    
+
+                    //FILTERING SENT MONEY 
+                    // if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.sentOption){
+                    //     if(cell.getColumnIndex() == sendIndex){
+                    //         if (Integer.parseInt(amount) == cell.getNumericCellValue()*-1) {
+                    //             System.out.println("-_-");
+                    //         }
+                    //     }
+                    // }
                 }
             }
         }
