@@ -22,7 +22,7 @@ public class SUB_BottomPanel extends JPanel{
         super.paintComponent(g2);
         g2.setColor(new Color(0,0,0,195));
         g2.fillRect(0, 0, getWidth(), getHeight());
-        g2.setColor(new Color(0,0,0));
+        g2.setColor(Strings.BORDER_COLOR);
         g2.drawRect(0, 0, getWidth()-1, getHeight()-1);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         main.ui.setFontAtt(g2, main.ui.fontRegular, Font.PLAIN, 13, Color.LIGHT_GRAY);

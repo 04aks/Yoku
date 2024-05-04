@@ -31,8 +31,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         super.paintComponent(g2);
-        g2.setColor(new Color(0,0,0));
-        g2.drawRect(0, 0, getWidth()-1, getHeight()-1);
+        
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         g2.setColor(new Color(0,0,0,195));
@@ -100,6 +99,11 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
         int butTextX = main.ui.getXForCenteredText(g2, butText, getWidth());
         g2.setColor(Color.LIGHT_GRAY);
         g2.drawString(butText, butTextX, buttonY+25);
+
+
+        g2.setStroke(new BasicStroke(1));
+        g2.setColor(Strings.BORDER_COLOR);
+        g2.drawRect(0, 0, getWidth()-1, getHeight()-1);
         
     }
     public void drawTextFields(Graphics2D g2, int x, int y, int width, int height){

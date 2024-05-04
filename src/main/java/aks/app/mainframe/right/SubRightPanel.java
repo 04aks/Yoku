@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
 import aks.app.Main;
+import aks.app.Strings;
 
 public class SubRightPanel extends JPanel implements MouseListener, MouseMotionListener{
     Main main;
@@ -95,7 +96,7 @@ public class SubRightPanel extends JPanel implements MouseListener, MouseMotionL
 
             y+=55;
         }
-        g2.setColor(new Color(0,0,0));
+        g2.setColor(Strings.BORDER_COLOR);
         g2.drawRect(0, 0, getWidth()-1, getHeight()-1);
     }
     @Override

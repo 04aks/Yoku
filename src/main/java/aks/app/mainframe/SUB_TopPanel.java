@@ -90,7 +90,7 @@ public class SUB_TopPanel extends JPanel implements MouseMotionListener, MouseLi
         super.paintComponent(g);
         g.setColor(new Color(0,0,0,195));
         g.fillRect(0, 0, getWidth(), getHeight());
-        g.setColor(new Color(0,0,0));
+        g.setColor(Strings.BORDER_COLOR);
         g.drawRect(0, 0, getWidth()-1, getHeight()-1);
     }
     @Override
