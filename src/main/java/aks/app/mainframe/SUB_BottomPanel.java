@@ -15,12 +15,15 @@ public class SUB_BottomPanel extends JPanel{
     public SUB_BottomPanel(Main main){
         this.main = main;
         setPreferredSize(new Dimension(100,26));
-        setBackground(Strings.HERO_COLOR);
     }
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         super.paintComponent(g2);
+        g2.setColor(new Color(0,0,0,195));
+        g2.fillRect(0, 0, getWidth(), getHeight());
+        g2.setColor(new Color(0,0,0));
+        g2.drawRect(0, 0, getWidth()-1, getHeight()-1);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         main.ui.setFontAtt(g2, main.ui.fontRegular, Font.PLAIN, 13, Color.LIGHT_GRAY);
         String text = Strings.COPYRIGHT;

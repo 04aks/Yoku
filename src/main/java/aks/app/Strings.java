@@ -21,4 +21,7 @@ public class Strings {
     public static Color CUSTOM_DARKGRAY = new Color(0x525252);
     public static Color CUSTOM_LIGHTGRAY = new Color(0x686868);
     public static Color GREEN_SELECTION = new Color(0x268016);
+    public static String EXIT_IMG_PATH = "/aks/res/images/exit.png";
+    public static String MAX_IMG_PATH = "/aks/res/images/max.png";
+    public static String MIN_IMG_PATH = "/aks/res/images/min.png";
 }

@@ -95,6 +95,8 @@ public class SubRightPanel extends JPanel implements MouseListener, MouseMotionL
 
             y+=55;
         }
+        g2.setColor(new Color(0,0,0));
+        g2.drawRect(0, 0, getWidth()-1, getHeight()-1);
     }
     @Override
     public void mouseClicked(MouseEvent e) {
