@@ -23,7 +23,7 @@ public class SUB_TopPanel extends JPanel implements MouseMotionListener, MouseLi
         this.main = main;
         setPreferredSize(new Dimension(100,26));
         // setBackground(Strings.HERO_COLOR);
-        setLayout(new FlowLayout(FlowLayout.LEFT, 10,3));
+        setLayout(new FlowLayout(FlowLayout.CENTER, 10,3));
         instantiateIteration();
         setLabels();
         addMouseListener(this);
@@ -88,7 +88,7 @@ public class SUB_TopPanel extends JPanel implements MouseMotionListener, MouseLi
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-        g.setColor(new Color(0,0,0,195));
+        g.setColor(Strings.PANEL_COLOR);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(Strings.BORDER_COLOR);
         g.drawRect(0, 0, getWidth()-1, getHeight()-1);

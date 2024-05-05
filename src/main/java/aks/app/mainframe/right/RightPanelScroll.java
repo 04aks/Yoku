@@ -8,27 +8,33 @@ import aks.app.Main;
 public class RightPanelScroll implements MouseWheelListener{
 
     Main main;
-    public RightPanelScroll(Main main){
+    SubRightPanel srp;
+    public RightPanelScroll(Main main, SubRightPanel srp){
         this.main = main;
+        this.srp = srp;
     }
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
         int scrollAmount = 20;
         if(e.getWheelRotation() > 0){
-            if(main.mainFrame.mainPanel.rightPanel.subRightPanel.y - scrollAmount > main.mainFrame.mainPanel.rightPanel.subRightPanel.getHeight() - 20){
-                main.mainFrame.mainPanel.rightPanel.subRightPanel.scroll -= scrollAmount;
+            if(!srp.drawFiltered){
+                if(srp.y - scrollAmount > srp.getHeight() - 20){
+                    srp.scroll -= scrollAmount;
+                }
             }
         }
         if(e.getWheelRotation() < 0){
-            if(main.mainFrame.mainPanel.rightPanel.subRightPanel.scroll + scrollAmount >= 0){
-                main.mainFrame.mainPanel.rightPanel.subRightPanel.scroll = 0;
-                
-            }else{
-                main.mainFrame.mainPanel.rightPanel.subRightPanel.scroll += scrollAmount;
+            if(!srp.drawFiltered){
+                if(srp.scroll + scrollAmount >= 0){
+                    srp.scroll = 0;
+                    
+                }else{
+                    srp.scroll += scrollAmount;
+                }
             }
         }
         
-        main.mainFrame.mainPanel.rightPanel.subRightPanel.repaint();
+        srp.repaint();
         
     }
     

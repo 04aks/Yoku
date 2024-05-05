@@ -20,7 +20,7 @@ public class SUB_BottomPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         super.paintComponent(g2);
-        g2.setColor(new Color(0,0,0,195));
+        g2.setColor(Strings.PANEL_COLOR);
         g2.fillRect(0, 0, getWidth(), getHeight());
         g2.setColor(Strings.BORDER_COLOR);
         g2.drawRect(0, 0, getWidth()-1, getHeight()-1);

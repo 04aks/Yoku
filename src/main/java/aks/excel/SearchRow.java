@@ -8,7 +8,7 @@ import aks.app.Main;
 
 public class SearchRow {
     Main main;
-    LinkedList<ExcelCells> filtered = new LinkedList<ExcelCells>();
+    public LinkedList<ExcelCells> filtered = new LinkedList<ExcelCells>();
     public SearchRow(Main main){
         this.main = main;
     }
@@ -93,8 +93,11 @@ public class SearchRow {
     }
     public void updateFilteredList(Row row, int rowStarts){
 
-        filtered.clear();
         filtered.offerLast(main.cellsManager.cellsList.get(row.getRowNum() - rowStarts));
         System.out.println(filtered);
+        if(!main.mainFrame.mainPanel.rightPanel.subRightPanel.drawFiltered){
+            main.mainFrame.mainPanel.rightPanel.subRightPanel.drawFiltered = true;
+        }
+        main.mainFrame.mainPanel.rightPanel.subRightPanel.repaint();
     }
 }

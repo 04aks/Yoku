@@ -34,7 +34,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
         
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        g2.setColor(new Color(0,0,0,195));
+        g2.setColor(Strings.PANEL_COLOR);
         g2.fillRect(0, 0, getWidth(), getHeight());
 
         String title = "Search for Specific Transactions";
@@ -42,7 +42,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
         int titleY = 60;
         main.ui.setFontAtt(g2, main.ui.fontBlack, Font.PLAIN, 27, Color.LIGHT_GRAY);
         g2.drawString(title, titleX, titleY);
-        String subtext = "Filter transactions based on: \n• The amount sent/recieved. \n• The account the transaction was sent to, or recieved from. \n• The date the transaction was made.";
+        String subtext = "\nFilter transactions based on: \n• The amount sent/recieved. \n• The account the transaction was sent to, or recieved from. \n• The date the transaction was made.";
         main.ui.setFontAtt(g2, main.ui.fontRegular, Font.PLAIN, 15, Color.LIGHT_GRAY);
         int subtextY = titleY + 20;
         for(String line : subtext.split("\n")){
@@ -84,15 +84,20 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
 
 
         
+        
+        int buttonWidth = 200;
+        int buttonHeight = 40;
+        int buttonX = (getWidth() - buttonWidth) / 2;
+        int buttonY = getHeight() - 50;
+        //BUTTON SHADOW
+        g2.setColor(Strings.SHADOWS_COLOR);
+        g2.fillRoundRect(buttonX+3, buttonY+3, buttonWidth, buttonHeight, 20, 20);
+        //BUTTON FILL
         if(slp.searchButtonHovered){
             g2.setColor(Strings.CUSTOM_DARKGRAY);
         }else{
             g2.setColor(Strings.CUSTOM_LIGHTGRAY);
         }
-        int buttonWidth = 200;
-        int buttonHeight = 40;
-        int buttonX = (getWidth() - buttonWidth) / 2;
-        int buttonY = getHeight() - 50;
         g2.fillRoundRect(buttonX, buttonY, buttonWidth, buttonHeight, 20, 20);
         slp.searchButton.setBounds(buttonX, buttonY, buttonWidth, buttonHeight);
         String butText = "SEARCH";
@@ -165,6 +170,7 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
         }
 
         if(slp.searchButton.contains(e.getX(),e.getY())){
+            main.searchRow.filtered.clear();
             main.searchRow.searchPayements(slp.inputContent[SUB_LeftPanel.AMOUNT], slp.inputContent[SUB_LeftPanel.ACCOUNT], slp.inputContent[SUB_LeftPanel.DATE]);
         }
         repaint();

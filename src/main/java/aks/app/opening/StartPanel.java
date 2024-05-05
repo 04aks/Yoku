@@ -8,6 +8,7 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import javax.swing.JPanel;
 import aks.app.Main;
+import aks.app.Strings;
 
 public class StartPanel extends JPanel{
     Main main;
@@ -24,7 +25,6 @@ public class StartPanel extends JPanel{
         this.main = main;
         om = new OpeningMouse(main);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        setBackground(Color.DARK_GRAY);
         addMouseListener(om);
         addMouseMotionListener(om);
     }
@@ -34,6 +34,10 @@ public class StartPanel extends JPanel{
         super.paintComponent(g2);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        g2.setColor(Strings.PANEL_COLOR);
+        g2.fillRect(0, 0, getWidth(), getHeight());
+        g2.setColor(Strings.BORDER_COLOR);
+        g2.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
         main.ui.drawOpeningPanel(g2);
     }
     

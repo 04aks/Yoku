@@ -10,7 +10,7 @@ import aks.app.opening.StartPanel;
 
 public class UI {
     Main main;
-    public BufferedImage greenArrow, redArrow;
+    public BufferedImage greenArrow, redArrow, exitButton;
     public Font fontRegular, fontBlack;
     public UI(Main main){
         this.main = main;
@@ -22,21 +22,26 @@ public class UI {
     public void importImages(){
         greenArrow = main.utils.importImage(Strings.GREEN_ARROW_PATH);
         redArrow = main.utils.importImage(Strings.RED_ARROW_PATH);
+        exitButton = main.utils.importImage(Strings.EXIT_IMG_PATH);
     }
     public void drawOpeningPanel(Graphics2D g2){
 
         setFontAtt(g2, main.ui.fontBlack, Font.BOLD, 20, Color.LIGHT_GRAY);
-        int hitboxX = StartPanel.WIDTH - 40;
-        int exitX = getXForCenteredText(g2, "X", 30) + hitboxX;
+        int hitboxX = StartPanel.WIDTH - 30;
         int exitY = 10;
-        main.startFrame.sp.exitButton.setBounds(hitboxX, exitY, 30, 30);
-        g2.drawString("X", exitX, exitY+22);
+        main.startFrame.sp.exitButton.setBounds(hitboxX, exitY, 20, 20);
+        g2.drawImage(exitButton, hitboxX, exitY, null);
 
-        setFontAtt(g2, main.ui.fontBlack, Font.PLAIN, 50, Color.WHITE);
+        
         String title = Strings.APP_NAME;
         String description = Strings.APP_DESC;
         int marginLeft = 50;
         int marginTop = 100;
+        //TITLE SHADOW
+        setFontAtt(g2, main.ui.fontBlack, Font.PLAIN, 50, Strings.SHADOWS_COLOR);
+        g2.drawString(title, marginLeft-3, marginTop+3);
+        //TITLE
+        setFontAtt(g2, main.ui.fontBlack, Font.PLAIN, 50, Color.WHITE);
         g2.drawString(title, marginLeft, marginTop);
 
 
@@ -50,22 +55,34 @@ public class UI {
         int width = 200;
         int height = 40;
         int x = (StartPanel.WIDTH - width)/2;
-        int y = StartPanel.HEIGHT - 100;
+        int y = StartPanel.HEIGHT - 70;
         main.startFrame.sp.addButton.setBounds(x,y,width,height);
-
         
-        
-        g2.setColor(Color.GRAY);
-        g2.fillRoundRect(x, y, width, height, 10, 10);
+        g2.setColor(Strings.CUSTOM_DARKGRAY);
+        // g2.fillRoundRect(x, y, width, height, 10, 10);
         setFontAtt(g2, fontBlack, Font.PLAIN, 15, Color.LIGHT_GRAY);
         String butText = "OPEN EXCEL FILE";
         int butDesX = getXForCenteredText(g2, butText, StartPanel.WIDTH);
         g2.drawString(butText, butDesX, y+25);
         if(main.startFrame.sp.buttonHovered){   
-            g2.setStroke(new BasicStroke(2));
+            // g2.setStroke(new BasicStroke(2));
+            //BUTTON TEXT SHADOW
+            g2.setColor(Strings.SHADOWS_COLOR);
+            g2.drawString(butText, butDesX+3, y+25+3);
+            //BUTTON TEXT
             g2.setColor(Color.white);
             g2.drawString(butText, butDesX, y+25);
-            g2.drawRoundRect(x, y, width-1, height-1, 10, 10);
+            // g2.drawRoundRect(x, y, width-1, height-1, 10, 10);
+        }
+    }
+    public void drawRedGreenArrow(Graphics2D g2, int recieved, int arrowX, int arrowY, int currencyX, int currencyY, int i){
+        if(recieved > 0){
+            g2.drawImage(main.ui.greenArrow, arrowX, arrowY, null);
+            g2.drawString(Integer.toString(recieved), currencyX, currencyY);
+        }else{
+            g2.drawImage(main.ui.redArrow, arrowX, arrowY, null);
+            int sent = (int)(main.cellsManager.cellsList.get(i).getSent()*(-1));
+            g2.drawString(Integer.toString(sent), currencyX, currencyY);
         }
     }
     public int getXForCenteredText(Graphics2D graphics, String text, int panel){
