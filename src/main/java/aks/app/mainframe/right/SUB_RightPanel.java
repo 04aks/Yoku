@@ -16,23 +16,5 @@ public class SUB_RightPanel extends JPanel{
         add(subRightPanel, BorderLayout.CENTER);
         
     }
-    // @Override
-    // public void mouseWheelMoved(MouseWheelEvent e) {
-    //     int scrollAmount = 50;
-    //     if(e.getWheelRotation() < 0){
-            
-    //         if(y - scrollAmount < 0){
-    //             System.out.println("up");
-    //             scroll-=scrollAmount;
-    //         }else{System.out.println("fuck");}
-    //     }
-    //     if(e.getWheelRotation() > 0){
-    //         if(y + scrollAmount <= getHeight()){
-    //             scroll+=scrollAmount;
-    //             System.out.println("down");
-    //         }else{System.out.println("fk");}
-    //     }
-
-    //     repaint();
-    // }
+    
 }

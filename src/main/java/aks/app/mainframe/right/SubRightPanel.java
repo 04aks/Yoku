@@ -9,8 +9,6 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import aks.app.Main;
 import aks.app.Strings;
@@ -86,11 +84,11 @@ public class SubRightPanel extends JPanel implements MouseListener, MouseMotionL
             int recieved = (int)main.cellsManager.cellsList.get(i).getRecieved();
             int currencyY = arrowY + 20;
             int currencyX = arrowX + main.ui.greenArrow.getWidth() + 10;
-            main.ui.drawRedGreenArrow(g2, recieved, arrowX, arrowY, currencyX, currencyY, i);
+            main.ui.drawRedGreenArrow(g2, recieved, arrowX, arrowY, currencyX, currencyY, i, main.cellsManager.cellsList.get(i));
 
             //DATE
             main.ui.setFontAtt(g2, main.ui.fontBlack, Font.PLAIN, 15, Color.LIGHT_GRAY);
-            String date = main.cellsManager.cellsList.get(i).getTransactionDate();
+            String date = main.cellsManager.cellsList.get(i).getTransactionDate()+" |";
             int dateX = main.ui.alignTextToRight(g2, date, (x+width)-arrowX);
             g2.drawString(date, dateX, currencyY);
 
@@ -121,10 +119,13 @@ public class SubRightPanel extends JPanel implements MouseListener, MouseMotionL
             //PANEL X BUTTON
             g2.drawImage(main.ui.exitButton, filteredPanelWidth-10, filteredPanelY+10, null);
             exitFilter.setBounds(filteredPanelWidth-10, filteredPanelY+10, 20, 20);
+            //PANEL TITLE SHADOW
+            String title = "Filtering Results";
+            main.ui.setFontAtt(g2, main.ui.fontRegular, Font.PLAIN, 15, Strings.SHADOWS_COLOR);
+            int titleX = filteredPanelX + 20;//main.ui.getXForCenteredText(g2, title, filteredPanelWidth) + filteredPanelX;
+            g2.drawString(title, titleX+1, filteredPanelY + 25+1);
             //PANEL TITLE
             main.ui.setFontAtt(g2, main.ui.fontRegular, Font.PLAIN, 15, Color.lightGray);
-            String title = "Filtering Results";
-            int titleX = filteredPanelX + 20;//main.ui.getXForCenteredText(g2, title, filteredPanelWidth) + filteredPanelX;
             g2.drawString(title, titleX, filteredPanelY + 25);
             //DRAW FILTERED ITEMS
             int rectWidth = filteredPanelWidth - 40;
@@ -145,13 +146,13 @@ public class SubRightPanel extends JPanel implements MouseListener, MouseMotionL
                 //FILTERED ITEMS DETAILS
                 int amount = (int)main.searchRow.filtered.get(i).getRecieved();
                 main.ui.setFontAtt(g2, main.ui.fontBlack, Font.PLAIN, 15, Color.LIGHT_GRAY);
-                main.ui.drawRedGreenArrow(g2, amount, rectX+10, rectY+5, rectX+50, rectY+25, i);
+                main.ui.drawRedGreenArrow(g2, amount, rectX+10, rectY+5, rectX+50, rectY+25, i, main.searchRow.filtered.get(i));
                 int f = rectX + 50;
                 int remainingWidth = filteredPanelWidth - f;
                 int half = remainingWidth/2;
-                String code = main.searchRow.filtered.get(i).getTransactionCode();
+                String code = main.searchRow.filtered.get(i).getTransactionCode()+" |";
                 g2.drawString(code, main.ui.alignTextToRight(g2, code, half+f), rectY +25);
-                String secondParty = main.searchRow.filtered.get(i).getOtherParty();
+                String secondParty = "ccp N° "+main.searchRow.filtered.get(i).getOtherParty()+" |";
                 g2.drawString(secondParty, main.ui.alignTextToRight(g2, secondParty, (half*2)+f), rectY +25);
 
                 rectY += rectHeight + 5;

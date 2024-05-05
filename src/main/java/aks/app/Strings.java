@@ -20,7 +20,7 @@ public class Strings {
     public static String RED_ARROW_PATH = "/aks/res/images/red.png";
     public static Color CUSTOM_DARKGRAY = new Color(0x404040);
     public static Color CUSTOM_LIGHTGRAY = new Color(0x555555);
-    public static Color GREEN_SELECTION = new Color(0x7BFF9B);
+    public static Color GREEN_SELECTION = new Color(0x3FFF6D );
     public static Color BORDER_COLOR = new Color(0,0,0,100);
     public static Color SHADOWS_COLOR = new Color(0,0,0,50);
     public static Color PANEL_COLOR = new Color(0,0,0,205);

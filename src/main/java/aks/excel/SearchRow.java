@@ -42,10 +42,7 @@ public class SearchRow {
                             amountInt*=-1;
                         }
 
-                        // if (amountInt == row.getCell(amountIndex).getNumericCellValue() && ccp.equals(Long.toString(ccpNum)) && date.equals(row.getCell(dateIndex).getStringCellValue())) {
-                        //     System.out.println(main.cellsManager.cellsList.get(cell.getRowIndex() - rowStarts).getTransactionCode() + "    " + (cell.getRowIndex() - rowStarts));
-                        //     break;
-                        // }
+
                         if(amountInt == row.getCell(amountIndex).getNumericCellValue()){
 
                             boolean ccpMatches = false, dateMatches = false;
@@ -61,15 +58,13 @@ public class SearchRow {
                             
                             
                             if(!ccp.isEmpty() && !date.isEmpty() && ccpMatches && dateMatches){
-                                System.out.println("third condition");
-                                updateFilteredList(row, rowStarts);                                
+                                updateFilteredList(row, rowStarts);  
+                                System.out.println(cellIndex);                              
                             }
                             if(!ccp.isEmpty() && date.isEmpty() && ccpMatches && !dateMatches){
-                                System.out.println("first condition");
                                 updateFilteredList(row, rowStarts);
                             }
                             if(ccp.isEmpty() && !date.isEmpty() && !ccpMatches && dateMatches){
-                                System.out.println("second condition");
                                 updateFilteredList(row, rowStarts);
                             }
                             
@@ -77,16 +72,6 @@ public class SearchRow {
                         }
                         
                     }
-                    
-
-                    //FILTERING SENT MONEY 
-                    // if(main.mainFrame.mainPanel.leftPanel.filterOption == main.mainFrame.mainPanel.leftPanel.sentOption){
-                    //     if(cell.getColumnIndex() == sendIndex){
-                    //         if (Integer.parseInt(amount) == cell.getNumericCellValue()*-1) {
-                    //             System.out.println("-_-");
-                    //         }
-                    //     }
-                    // }
                 }
             }
         }
@@ -94,7 +79,6 @@ public class SearchRow {
     public void updateFilteredList(Row row, int rowStarts){
 
         filtered.offerLast(main.cellsManager.cellsList.get(row.getRowNum() - rowStarts));
-        System.out.println(filtered);
         if(!main.mainFrame.mainPanel.rightPanel.subRightPanel.drawFiltered){
             main.mainFrame.mainPanel.rightPanel.subRightPanel.drawFiltered = true;
         }

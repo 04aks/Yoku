@@ -1,6 +1,5 @@
 package aks.app.mainframe;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;

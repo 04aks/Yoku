@@ -1,12 +1,11 @@
 package aks.app;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
 import aks.app.opening.StartPanel;
+import aks.excel.ExcelCells;
 
 public class UI {
     Main main;
@@ -75,13 +74,13 @@ public class UI {
             // g2.drawRoundRect(x, y, width-1, height-1, 10, 10);
         }
     }
-    public void drawRedGreenArrow(Graphics2D g2, int recieved, int arrowX, int arrowY, int currencyX, int currencyY, int i){
+    public void drawRedGreenArrow(Graphics2D g2, int recieved, int arrowX, int arrowY, int currencyX, int currencyY, int i, ExcelCells excelCell){
         if(recieved > 0){
             g2.drawImage(main.ui.greenArrow, arrowX, arrowY, null);
             g2.drawString(Integer.toString(recieved), currencyX, currencyY);
         }else{
             g2.drawImage(main.ui.redArrow, arrowX, arrowY, null);
-            int sent = (int)(main.cellsManager.cellsList.get(i).getSent()*(-1));
+            int sent = (int)(excelCell.getSent()*(-1));
             g2.drawString(Integer.toString(sent), currencyX, currencyY);
         }
     }

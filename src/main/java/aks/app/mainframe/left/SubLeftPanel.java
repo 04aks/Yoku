@@ -195,7 +195,6 @@ public class SubLeftPanel extends JPanel implements MouseListener, MouseMotionLi
         int code = e.getKeyCode();
         char character = e.getKeyChar();
         
-
         //DELETE
         if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
             deleteInput();

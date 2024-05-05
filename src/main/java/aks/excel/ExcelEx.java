@@ -96,10 +96,6 @@ public class ExcelEx {
                 index++;
             }
         }
-        // int debugnum = 6;
-        // System.out.println(main.cellsManager.excelCells[debugnum].getTransactionDate()+" "+main.cellsManager.excelCells[debugnum].getTransactionCode()
-        // +" "+main.cellsManager.excelCells[debugnum].getOtherParty()+" "+main.cellsManager.excelCells[debugnum].getSent()+" "+main.cellsManager.excelCells[debugnum].getRecieved()
-        // +" "+main.cellsManager.excelCells[debugnum].getTax()+" "+main.cellsManager.excelCells[debugnum].getRemaining());
     }
     public void getTableTitle(){
 
